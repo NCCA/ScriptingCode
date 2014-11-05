@@ -1,0 +1,19 @@
+/// Written by Rob Bateman (robthebloke) see
+// http://nccastaff.bournemouth.ac.uk/jmacey/RobTheBloke/www/mel/MDATA_listing.html
+{
+		// declare an array called $nodes. Call ls to list
+		// the nodes in the scene
+		$nodes = `ls`;
+		
+		// loop through the array and print each node
+		for( $node in $nodes ) {
+
+			// use the nodeType function to determine the 
+			// type of the node
+			$type = `nodeType $node`;
+			
+		
+			// print the node name and it's type
+			print( $node +" "+ $type +"\n" );
+		}
+	}

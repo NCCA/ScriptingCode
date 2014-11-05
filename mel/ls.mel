@@ -1,0 +1,14 @@
+// list all objects in a scene
+{
+		// declare an array called $nodes. Call ls to list
+		// the nodes in the scene
+		$nodes = `ls`;
+		
+		// loop through the array and print each node
+		for( $node in $nodes ) 
+		{
+		
+			// print the node name
+			print( $node + "\n" );
+		}
+	}
