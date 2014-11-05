@@ -1,0 +1,13 @@
+// first select all objects and delete
+select -all;
+delete ;
+// create a torus
+torus -r 4 -hr 0.5 -n Torus1;
+// now move
+move -xyz 0 1 0 Torus1;
+// scale 
+scale -xyz 0.5 0.5 0.5 Torus1;
+// rotate using degrees (can be ommited)
+rotate -xyz 0 45deg 0 Torus1;
+// rotate  using radians
+rotate -xyz 1rad 0 0 Torus1;

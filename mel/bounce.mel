@@ -1,0 +1,30 @@
+// first select all objects and delete
+select -all;
+delete ;
+polySphere -r 2 -n ball;
+float $g = -0.04;
+float $yVelocity = 0.8;
+float $xVelocity = 0.4;
+float $initialYPos = 6.0;
+float $initialXPos = 0.0;
+
+move -xyz $initialXPos $initialYPos 0 ball;
+$posy=$initialYPos;
+int $timeMult=2;
+int $i;
+for($i=0; $i<6; ++$i)
+{
+	$time=0;
+	$posy=$initialYPos;
+	while ($posy>0 )
+	{
+		$posy = $initialYPos + $yVelocity*($time-1) + $g*($time-1)*($time-1)/2;
+		$posx = $initialXPos + $xVelocity*(($time) + $time-1);
+	  setKeyframe -at translateY -value $posy -t ($time*$timeMult) ;
+		setKeyframe -at translateX -value $posx -t ($time*$timeMult) ;
+		$time+=1;
+
+	}
+	$yVelocity-=0.1;
+
+}

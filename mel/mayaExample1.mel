@@ -1,0 +1,14 @@
+// let's create a sphere
+
+sphere -r 2 -n Sphere1;
+
+// query the radius of the sphere named Sphere1
+float $radius = `sphere -q -r Sphere1`;
+print ("The sphere radius = " + $radius + "\n");
+
+// modify the radius
+print ("Increment the sphere's radius by one unit\n");
+sphere -e -r ($radius+1) Sphere1;
+
+$radius = `sphere -q -r Sphere1`;
+print ("The sphere radius = " + $radius + "\n");

@@ -1,0 +1,25 @@
+string $colours[]={"red","green","blue","white"};
+
+string $sel="red";
+
+switch($sel)
+{
+	case "red" :
+		print("red \n");
+	break;
+	case "green" :
+		print("green \n");
+	break;
+	case "blue" :
+		print("blue \n");
+	break;
+	case "white" :
+		print("white \n");
+	break;
+
+	default :
+		print("Unknown \n");
+	break;
+}
+
+

@@ -1,0 +1,15 @@
+// first select all objects and delete
+select -all;
+delete ;
+// create a nurbs cube
+nurbsCube -w 3 -name Cube1;
+// get attributes and print
+print(`getAttr Cube1.tx`+"\n");
+print(`getAttr Cube1.ty`+"\n");
+print(`getAttr Cube1.tz`+"\n");
+// let's make sure 'Cube1' is selected
+select -r Cube1;
+// and modify the attributes
+setAttr Cube1.tx 2;
+setAttr Cube1.ty 3;
+setAttr Cube1.tz 4;

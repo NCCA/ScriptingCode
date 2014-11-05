@@ -1,0 +1,6 @@
+string $colours[]={"red","green","blue","white"};
+int $a=0;
+do{
+		print("Colour "+$a+" "+$colours[$a]+"\n");
+		$a++;
+}while ($a < size($colours));

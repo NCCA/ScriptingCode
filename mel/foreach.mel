@@ -1,0 +1,5 @@
+string $colours[]={"red","green","blue","white"};
+for($c in $colours)
+{
+		print("Colour "+$c+"\n");
+}
