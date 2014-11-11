@@ -4,7 +4,7 @@
 		// a set of possible command that could be executed
 		string $commands[] = { "polyCone", "polyCube", "polySphere", "polyTorus" };
 
-		// repeast a few times
+		// repeat a few times
 		for( $i=-10; $i<=10; $i+=2 )
 		{
 			for( $j=-10; $j<=10; $j+=2 )
