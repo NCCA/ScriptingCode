@@ -1,0 +1,73 @@
+proc createSphere(float $minRad, float $maxRad)
+{
+  polySphere -sx 8 -sy 8 -r `rand $minRad $maxRad`;
+  $x = rand(-$minRad,$minRad); 
+  $y = rand(-$minRad,$minRad); 
+  $z = rand(-$minRad,$minRad); 
+  move $x $x $x  ;
+  $sx= rand(360);
+  $sy= rand(360);
+  $sz= rand(360);
+  rotate -os $sx $sy $sz;
+  $sx= rand($maxRad)+$minRad;
+  $sy= rand($maxRad)+$minRad;
+  $sz= rand($maxRad)+$minRad;
+  scale $sx $sy $sz;
+ 
+
+};
+
+proc createRock(int $numSpheres, float $minRad, float $maxRad)
+{
+  int $i;
+  for ($i = 0; $i < $numSpheres; ++$i) 
+  {
+    createSphere($minRad,$maxRad);
+  }
+
+  string $spheres[] = `ls -type shape "pSphere*"`;
+  select $spheres;
+  $name= `polyCBoolOp -op 1 -ch 1 -preserveColor 0 -classification 1 -name NewRock`;
+  polyTriangulate -ch 1 -name $name;
+  polyReduce  -p 50  -replaceOriginal 1 -name $name;
+  polySmooth  -name $name;  
+  delete -ch $name;
+  $sx= rand(360);
+  $sy= rand(360);
+  $sz= rand(360);
+  rotate -os $sx $sy $sz;
+
+}
+
+global proc createRockAction() {
+  // read the control for the number of cubes to be created
+  int $numSpheres = `intSliderGrp -q  -v numSpheres`;
+  float $minRad = `floatSliderGrp -q  -v minRadius`;
+  float $maxRad = `floatSliderGrp -q  -v maxRadius`;
+  print("values are " + $numSpheres + " " + $minRad + " " + $maxRad );
+  createRock($numSpheres,  $minRad,  $maxRad);
+}
+
+
+proc createRockGUI()
+{
+
+  if ( `window -exists RockWindow` ) 
+  {
+    deleteUI RockWindow; // delete window when it exists
+  }
+  window -t "rock creation tool" RockWindow;
+  columnLayout colLayout;
+  floatSliderGrp -p colLayout -field 1 -l "min rock radius" -min 0.2 -max 2.0 -value 0.2 minRadius;
+  floatSliderGrp -p colLayout -field 1 -l "max rock radius" -min 0.2 -max 5.0  -value 1.2 maxRadius;
+
+  intSliderGrp -p colLayout -field 1 -l "number of spheres" -min 4 -max 100  -value 4 numSpheres;
+
+  button -p colLayout -l "Create" -command "createRockAction()";
+
+  showWindow RockWindow;
+
+}
+
+createRockGUI();
+
