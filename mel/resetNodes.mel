@@ -1,0 +1,14 @@
+// create a function 
+proc resetSelectedNodes()
+{
+  // get selected nodes
+  $nodes = `ls -sl`;
+      
+  // loop through the selected nodes and reset
+  for( $node in $nodes ) 
+  {
+      setAttr ($node+".rotate") -type "double3" 0 0 0;
+      setAttr ($node+".translate") -type "double3" 0 0 0;
+      setAttr ($node+".scale") -type "double3" 1 1 1;
+  }
+}
