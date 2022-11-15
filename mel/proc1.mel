@@ -3,5 +3,5 @@ global proc float squareAndAdd(float $x, float $y)
 	return $x * $x + $y;
 }
 
-squareAndAdd(5.0, 2.0);
+print(squareAndAdd(5.0, 2.0));
 
